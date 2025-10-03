@@ -1,0 +1,26 @@
+/* Overrides for iOS Safari text rendering and nav default state */
+
+/* Ensure the side panel is closed by default and opens with `.on` */
+.nav-panel {
+  left: 0 !important;
+  transform: translateX(-110%) !important;
+  will-change: transform;
+}
+.nav-panel.on {
+  transform: translateX(0%) !important;
+}
+
+/* Extra safety: avoid backface text artifacts on iOS */
+section > article, section > article * {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+section > article > .inner, section > article > .inner .txt {
+  transform: translateZ(0);
+}
+
+/* Improve text rasterization on iOS */
+html, body, figure, section, .txt, .txt h2, .txt p {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}

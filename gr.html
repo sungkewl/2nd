@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grammar Quest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/gr.css" />
+    <style>
+      @media (max-width: 500px) {
+        #dialogue-box,
+        #rulebook-overlay { display: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Grammar Quest</h1>
+    <div id="main-container">
+      <div id="left-panel" class="panel">
+        <div id="quest-log">
+          <h3>Quest</h3>
+          <p id="quest-text"></p>
+        </div>
+        <div id="dialogue-box" class="hidden">
+          <p id="dialogue-text"></p>
+        </div>
+        <div id="question-box">
+          <p id="question-text"></p>
+          <div id="choices" class="choices"></div>
+          <div id="loot-log" aria-live="polite" class="loot-log"></div>
+        </div>
+        <div id="menu-buttons">
+          <button class="menu-btn" id="btn-leaderboard">LEADERBOARD</button>
+          <button class="menu-btn" id="btn-review">Re-Try</button>
+          <button class="menu-btn" id="btn-rewards">REWARDS</button>
+        </div>
+      </div>
+      <div id="center-panel" class="panel">
+        <div id="game-world" aria-label="게임 보드">
+          <div id="tiles" class="layer" aria-hidden="true"></div>
+          <div id="entities" class="layer"></div>
+          <div id="key-badge" aria-live="polite" title="Keys">
+            <span class="icon">&#128273;</span>
+            <span id="key-count">0</span>
+          </div>
+        </div>
+      </div>
+      <div id="right-panel" class="panel">
+        <h3>Player</h3>
+        <div class="avatar-widget">
+          <div id="avatar-figure" class="avatar-figure" aria-label="Avatar"></div>
+          <div class="avatar-meta">
+            <div id="avatar-title" class="avatar-title">Novice Reader</div>
+            <div id="avatar-desc" class="avatar-desc">Basic Outfit</div>
+          </div>
+        </div>
+        <div id="player-stats">
+          <p>Level: <span id="rp-player-level">1</span></p>
+          <div class="progress-bar-container">
+            <div id="player-xp-bar" class="progress-bar"></div>
+            <span id="rp-player-xp-text">0 / 10</span>
+          </div>
+        </div>
+        <div id="achievements">
+          <h3>Badges</h3>
+          <div id="badge-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-controls" aria-label="Mobile Controls">
+      <button type="button" class="mc-btn up" id="mc-up" aria-label="Up">&uarr;</button>
+      <button type="button" class="mc-btn left" id="mc-left" aria-label="Left">&larr;</button>
+      <button type="button" class="mc-btn right" id="mc-right" aria-label="Right">&rarr;</button>
+      <button type="button" class="mc-btn down" id="mc-down" aria-label="Down">&darr;</button>
+    </div>
+
+    <div id="rulebook-overlay" class="hidden" aria-modal="true" role="dialog">
+      <div id="rulebook" class="rulebook">
+        <div class="rb-header">
+          <span id="rulebook-title">Rule Book</span>
+          <button id="rb-close" class="rb-close" aria-label="Close">×</button>
+        </div>
+        <div id="rulebook-content" class="rb-content">
+          <pre id="rulebook-text" class="rb-text" aria-live="polite"></pre>
+        </div>
+        <div class="rb-footer">
+          <span id="rulebook-hint" class="rb-hint">Y: OK | N: Cancel</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="./index.html" class="home-float-btn" aria-label="홈으로">🏠</a>
+
+    <script src="./js/dataManager.js" defer></script>
+    <script src="./js/gr.js" defer></script>
+    <script src="./js/avatarWidget.js" defer></script>
+  </body>
+</html>

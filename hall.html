@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>명예의 전당</title>
+    <link rel="stylesheet" href="./css/all.css" />
+    <link rel="stylesheet" href="./css/hall.css" />
+    <!-- iOS/Safari tweaks & menu default-state fixes -->
+    <link rel="stylesheet" href="./css/hall-fix.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <figure>
+      <nav class="nav-panel">
+        <ul>
+          <li><a href="./index.html">홈으로 돌아가기</a></li>
+          <li><a href="./gr.html">문법 (Grammar)</a></li>
+          <li><a href="./reading.html">독해 (Reading)</a></li>
+          <li><a href="./bingo.html">듣기 (Listening)</a></li>
+        </ul>
+      </nav>
+      <h1>
+        <strong>Hall of Fame</strong>
+        <span>LinguaVerse</span>
+      </h1>
+      <a href="#" class="menu"><i class="fas fa-bars"></i></a>
+      <p>© 2025 Designed by LinguaVerse</p>
+      <section>
+        <article class="on">
+          <div class="inner">
+            <div class="pic">
+              <img
+                src="https://github.com/sungkewl/port_img/blob/main/uifaces-popular-avatar.jpg?raw=true"
+                alt="God of Grammar cover"
+              />
+            </div>
+            <div class="txt">
+              <h2>A God of Grammar</h2>
+              <p>A God who conquers GR section is shown!</p>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div class="inner">
+            <div class="pic">
+              <img
+                src="https://github.com/sungkewl/port_img/blob/main/uifaces-popular-avatar%20(4).jpg?raw=true"
+                alt="God of Reading cover"
+              />
+            </div>
+            <div class="txt">
+              <h2>A God of Reading </h2>
+              <p>A God who conquers RC section is shown!!</p>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div class="inner">
+            <div class="pic">
+              <img
+                src="https://github.com/sungkewl/port_img/blob/main/uifaces-popular-avatar%20(3).jpg?raw=true"
+                alt="God of Listening cover"
+              />
+            </div>
+            <div class="txt">
+              <h2>A God of Listening</h2>
+              <p>A God who conquers LC section is shown!</p>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div class="inner">
+            <div class="pic">
+              <img
+                src="https://github.com/sungkewl/port_img/blob/main/uifaces-popular-avatar%20(2).jpg?raw=true"
+                alt="God of God cover"
+              />
+            </div>
+            <div class="txt">
+              <h2>A God of Gods</h2>
+              <p>A God who conquers all the sections is shown!</p>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div class="inner">
+            <div class="pic">
+              <img
+                src="https://github.com/sungkewl/port_img/blob/main/uifaces-popular-avatar%20(1).jpg?raw=true"
+                alt="GOd of Teacher cover"
+              />
+            </div>
+            <div class="txt">
+              <h2>A God of a teacher</h2>
+              <p>A teacher teaches one of gods of English!</p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <nav class="pagination"></nav>
+      <div class="btnprev"></div>
+      <div class="btnnext"></div>
+    </figure>
+    <script>
+      const frame = document.querySelector("section");
+      const lists = document.querySelectorAll("article");
+      const prev = document.querySelector(".btnprev");
+      const next = document.querySelector(".btnnext");
+      const audio = document.querySelectorAll("audio");
+
+      const deg = 360 / lists.length;
+      let active = 0;
+
+      function initMusic() {
+        audio.forEach((el) => {
+          el.pause();
+          el.load();
+        });
+        document.querySelectorAll(".pic img").forEach((img) => {
+          img.style.animationPlayState = "paused";
+        });
+      }
+
+      // 초기 배치
+      lists.forEach((el, index) => {
+        el.style.transform = `rotateY(${deg * index}deg) translateZ(20vw)`;
+      });
+
+      // 활성화 함수
+      function activation(index) {
+        initMusic();
+        lists.forEach((el) => {
+          el.classList.remove("on");
+        });
+        lists[index].classList.add("on");
+        frame.style.transform = `rotateY(${-deg * index}deg)`;
+      }
+
+      activation(active);
+
+      prev.addEventListener("click", () => {
+        active === 0 ? (active = lists.length - 1) : active--;
+        activation(active);
+      });
+
+      next.addEventListener("click", () => {
+        active === lists.length - 1 ? (active = 0) : active++;
+        activation(active);
+      });
+
+      // 기존 JS 코드 맨 아래에 추가
+      const menuBtn = document.querySelector(".menu");
+      const navPanel = document.querySelector(".nav-panel");
+
+      menuBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        navPanel.classList.toggle("on");
+      });
+    </script>
+  </body>
+</html>

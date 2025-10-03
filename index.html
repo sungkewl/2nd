@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LingoVerse</title>
+
+  <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header id="header" class="lv-header">
+  <div class="container header">
+    
+    <a href="/" class="brand" aria-label="홈으로">
+      <span class="brand-mark">
+       
+        <img src="./images/logo.png" alt="" loading="lazy" />
+      </span>
+      <span class="brand-word">
+        <strong class="brand-title">LingoVerse</strong>
+        <em class="brand-sub">Learn by quest</em>
+      </span>
+    </a>
+
+    <!-- 햄버거 버튼 (모바일) -->
+    <button id="nav-toggle" class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primary-nav">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- 내비 -->
+    <nav class="nav" aria-label="주요 메뉴">
+      <ul id="primary-nav">
+        <li><a href="./gr.html">Grammar</a></li>
+        <li><a href="./reading.html">Reading</a></li>
+        <li><a href="./bingo.html">Bingo</a></li>
+        <li><a href="./hall.html">Hall of Fame</a></li>
+      </ul>
+    </nav>
+
+    <!-- 모바일 오버레이 -->
+    <div id="nav-overlay" class="nav-overlay" aria-hidden="true" tabindex="-1"></div>
+
+  
+    
+  </div>
+</header>
+
+
+<main>
+  <h1 class="visually-hidden">LingoVerse 메인 페이지</h1>
+
+ 
+  <section id="banner" class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://github.com/sungkewl/port_img/blob/main/banner1_compressed.webp?raw=true"
+               class="d-block w-100"
+               alt="배너1"
+               width="1600" height="600" loading="eager">
+        </div>
+        <div class="carousel-item">
+          <img src="https://github.com/sungkewl/port_img/blob/main/banner2_compressed.webp?raw=true"
+               class="d-block w-100"
+               alt="배너3"
+               width="1600" height="600" loading="lazy">
+        </div>
+        <div class="carousel-item">
+          <img src="https://github.com/sungkewl/port_img/blob/main/banner3_compressed.webp?raw=true"
+               class="d-block w-100"
+               alt="배너2"
+               width="1600" height="600" loading="lazy">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- About -->
+  <div class="about-lingo">
+    <div class="container">
+      <div class="about-lingo-text">
+        <h2>LingoVerse</h2>
+        <p>
+          재미있는 퀘스트와 보상 시스템으로 동기부여를 높여 보세요! 읽기·듣기·문법 게임 문제를 풀고
+          <strong>90%</strong> 이상 정답률을 달성하면 레벨업과 함께 다양한 보상을 획득합니다.
+          꾸준히 학습하면 명예의 전당에 이름을 올릴 수 있어요.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <section id="game-cards" class="container">
+    <div class="card">
+      <div class="card-image-rc"></div>
+      <h3>Reading Comprehension</h3>
+      <p>어휘 확장, 글의 구조 파악, 배경지식 연결까지 종합적으로 읽기 실력을 길러요.</p>
+      <a href="./reading.html" class="card-btn">플레이하기</a>
+    </div>
+    <div class="card">
+      <div class="card-image-lc"></div>
+      <h3>Listening Comprehension</h3>
+      <p>TED 강연을 듣고 핵심 어휘를 찾아 빙고를 완성해 보세요! 재밌게 듣기 실력을 키웁니다.</p>
+      <a href="./bingo.html" class="card-btn">플레이하기</a>
+    </div>
+    <div class="card">
+      <div class="card-image-gr"></div>
+      <h3>Grammar RPG</h3>
+      <p>지루한 문법을 RPG로 즐기면서 배워요. 기사와 함께 모험의 길로 출발해요!</p>
+      <a href="./gr.html" class="card-btn">플레이하기</a>
+    </div>
+    <div class="card">
+      <div class="card-image-fame"></div>
+      <h3>Hall of Fame</h3>
+      
+      <p>노력과 성취를 기록하는 명예의 전당입니다. 여러분의 멋진 여정을 공유해 보세요.</p>
+      <a href="./hall.html" class="card-btn">둘러보기</a>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="boardbody">
+    <div class="dashboard-container">
+      <header class="dashboard-header">
+        <h2>Dashboard</h2>
+        <p><span id="user-name">Hero</span>의 학습 현황</p>
+      </header>
+
+      <main class="widgets-grid">
+        <div class="widget profile-widget">
+          <img src="./images/attack_1.png" alt="플레이어 아이콘">
+          <h3 id="user-level">레벨 1</h3>
+          <div class="progress-bar-container">
+            <div id="user-xp-bar" class="progress-bar"></div>
+            <span id="user-xp-text">0 / 10 XP</span>
+          </div>
+        </div>
+
+        <div class="widget chart-widget">
+          <h3>XP 획득 분포</h3>
+          <ul id="xp-legend" class="xp-legend" aria-label="XP 분포 범례"></ul>
+          <canvas id="xp-chart" aria-label="XP 도넛 차트"></canvas>
+        </div>
+
+        <div class="widget achievements-widget">
+          <h3>획득한 뱃지</h3>
+          <div id="badge-container"></div>
+        </div>
+
+        <div class="widget navigation-widget">
+          <h3>학습 시작하기</h3>
+          <a href="./gr.html" class="game-link">Grammar RPG</a>
+          <a href="./reading.html" class="game-link">독해 훈련</a>
+          <a href="./bingo.html" class="game-link">LC 빙고</a>
+          <a href="./hall.html" class="game-link">명예의 전당</a>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- Community Board -->
+  <section id="community-board" class="community-board">
+    <div class="container">
+      <h2 class="cb-heading">Game Community Board</h2>
+      <div class="board-grid">
+        <!-- Reading Board -->
+        <section class="board-section" aria-labelledby="cb-reading-title">
+          <div class="board-title">
+            <img class="board-icon" src="./images/reading_avatar_sprites.png" alt="Reading icon" />
+            <h3 id="cb-reading-title">Reading Board</h3>
+          </div>
+          <ul class="board-list">
+            <li class="post">
+              <img class="post-avatar" src="./images/member1.jpg" alt="Ava avatar" />
+              <a class="post-title" href="#">Struggling with inference questions — tips?</a>
+              <span class="post-meta"><span class="ico eye"></span>128 <span class="sep">·</span> <span class="ico comment"></span>6 <span class="sep">·</span> by Ava · 2h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member2.jpg" alt="Ben avatar" />
+              <a class="post-title" href="#">How do you skim effectively under time pressure?</a>
+              <span class="post-meta"><span class="ico eye"></span>97 <span class="sep">·</span> <span class="ico comment"></span>4 <span class="sep">·</span> by Ben · 4h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member3.jpg" alt="Chloe avatar" />
+              <a class="post-title" href="#">Favorite non-fiction pieces to practice</a>
+              <span class="post-meta"><span class="ico eye"></span>141 <span class="sep">·</span> <span class="ico comment"></span>8 <span class="sep">·</span> by Chloe · 1d</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member4.jpg" alt="Dan avatar" />
+              <a class="post-title" href="#">Vocabulary notebook: what format works?</a>
+              <span class="post-meta"><span class="ico eye"></span>76 <span class="sep">·</span> <span class="ico comment"></span>3 <span class="sep">·</span> by Dan · 1d</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member5.jpg" alt="Elle avatar" />
+              <a class="post-title" href="#">Share your RC warm-up routine</a>
+              <span class="post-meta"><span class="ico eye"></span>65 <span class="sep">·</span> <span class="ico comment"></span>2 <span class="sep">·</span> by Elle · 3d</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Grammar RPG Board -->
+        <section class="board-section" aria-labelledby="cb-gr-title">
+          <div class="board-title">
+            <img class="board-icon" src="./images/reading_avatar_sprites.png" alt="Grammar RPG icon" />
+            <h3 id="cb-gr-title">Grammar RPG Board</h3>
+          </div>
+          <ul class="board-list">
+            <li class="post">
+              <img class="post-avatar" src="./images/member6.jpg" alt="Ivy avatar" />
+              <a class="post-title" href="#">Have vs. Has: quick cheatsheet</a>
+              <span class="post-meta"><span class="ico eye"></span>110 <span class="sep">·</span> <span class="ico comment"></span>9 <span class="sep">·</span> by Ivy · 5h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member7.jpg" alt="Jay avatar" />
+              <a class="post-title" href="#">Past perfect in daily speech?</a>
+              <span class="post-meta"><span class="ico eye"></span>74 <span class="sep">·</span> <span class="ico comment"></span>5 <span class="sep">·</span> by Jay · 8h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member8.jpg" alt="Kai avatar" />
+              <a class="post-title" href="#">Articles in RPG item names</a>
+              <span class="post-meta"><span class="ico eye"></span>89 <span class="sep">·</span> <span class="ico comment"></span>4 <span class="sep">·</span> by Kai · 12h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member1.jpg" alt="Lea avatar" />
+              <a class="post-title" href="#">Common preposition traps on quests</a>
+              <span class="post-meta"><span class="ico eye"></span>63 <span class="sep">·</span> <span class="ico comment"></span>3 <span class="sep">·</span> by Lea · 1d</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member2.jpg" alt="Max avatar" />
+              <a class="post-title" href="#">Conditional sentences: fun mini-quest ideas</a>
+              <span class="post-meta"><span class="ico eye"></span>92 <span class="sep">·</span> <span class="ico comment"></span>7 <span class="sep">·</span> by Max · 2d</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Listening Bingo Board -->
+        <section class="board-section" aria-labelledby="cb-bingo-title">
+          <div class="board-title">
+            <img class="board-icon" src="./images/reading_avatar_run_sprites.png" alt="Listening Bingo icon" />
+            <h3 id="cb-bingo-title">Listening Bingo Board</h3>
+          </div>
+          <ul class="board-list">
+            <li class="post">
+              <img class="post-avatar" src="./images/member3.jpg" alt="Neo avatar" />
+              <a class="post-title" href="#">Best TED talks for beginners?</a>
+              <span class="post-meta"><span class="ico eye"></span>131 <span class="sep">·</span> <span class="ico comment"></span>11 <span class="sep">·</span> by Neo · 3h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member4.jpg" alt="Pia avatar" />
+              <a class="post-title" href="#">Note-taking symbols for listening bingo</a>
+              <span class="post-meta"><span class="ico eye"></span>88 <span class="sep">·</span> <span class="ico comment"></span>6 <span class="sep">·</span> by Pia · 7h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member5.jpg" alt="Quin avatar" />
+              <a class="post-title" href="#">How to avoid zoning out mid-talk</a>
+              <span class="post-meta"><span class="ico eye"></span>70 <span class="sep">·</span> <span class="ico comment"></span>5 <span class="sep">·</span> by Quin · 10h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member6.jpg" alt="Rae avatar" />
+              <a class="post-title" href="#">Shadowing vs. dictation: which helped you?</a>
+              <span class="post-meta"><span class="ico eye"></span>95 <span class="sep">·</span> <span class="ico comment"></span>9 <span class="sep">·</span> by Rae · 1d</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member7.jpg" alt="Sam avatar" />
+              <a class="post-title" href="#">Share your 5x5 bingo card themes</a>
+              <span class="post-meta"><span class="ico eye"></span>62 <span class="sep">·</span> <span class="ico comment"></span>2 <span class="sep">·</span> by Sam · 2d</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Hall of Fame Board -->
+        <section class="board-section" aria-labelledby="cb-hall-title">
+          <div class="board-title">
+            <img class="board-icon" src="./images/npc1.png" alt="Hall of Fame icon" />
+            <h3 id="cb-hall-title">Hall of Fame Board</h3>
+          </div>
+          <ul class="board-list">
+            <li class="post">
+              <img class="post-avatar" src="./images/member8.jpg" alt="Tom avatar" />
+              <a class="post-title" href="#">Road to Level 10: milestones</a>
+              <span class="post-meta"><span class="ico eye"></span>150 <span class="sep">·</span> <span class="ico comment"></span>12 <span class="sep">·</span> by Tom · 6h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member1.jpg" alt="Uma avatar" />
+              <a class="post-title" href="#">Post your fastest gate-open run!</a>
+              <span class="post-meta"><span class="ico eye"></span>101 <span class="sep">·</span> <span class="ico comment"></span>10 <span class="sep">·</span> by Uma · 9h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member2.jpg" alt="Vic avatar" />
+              <a class="post-title" href="#">Weekly streak brag thread</a>
+              <span class="post-meta"><span class="ico eye"></span>78 <span class="sep">·</span> <span class="ico comment"></span>6 <span class="sep">·</span> by Vic · 12h</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member3.jpg" alt="Wen avatar" />
+              <a class="post-title" href="#">Badge designs you want to see</a>
+              <span class="post-meta"><span class="ico eye"></span>84 <span class="sep">·</span> <span class="ico comment"></span>7 <span class="sep">·</span> by Wen · 1d</span>
+            </li>
+            <li class="post">
+              <img class="post-avatar" src="./images/member4.jpg" alt="Zoe avatar" />
+              <a class="post-title" href="#">Share a proud moment from today</a>
+              <span class="post-meta"><span class="ico eye"></span>66 <span class="sep">·</span> <span class="ico comment"></span>3 <span class="sep">·</span> by Zoe · 2d</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="lv-footer" aria-labelledby="lv-footer-title">
+  <div class="lv-wave" aria-hidden="true"></div>
+  <div class="lv-container">
+    <div class="lv-grid">
+      <!-- 브랜드 블록 -->
+      <section class="lv-col" aria-label="About LingoVerse">
+        <div class="lv-brand">
+          <div class="lv-logo" aria-hidden="true"></div>
+          <div>
+            <h3 id="lv-footer-title" class="lv-title">LingoVerse</h3>
+            <span class="lv-tag">Gamified English Learning</span>
+          </div>
+        </div>
+        <p style="margin:14px 0 0;color:var(--muted);line-height:1.7">
+          재미와 성장의 균형. <strong>문법·읽기·듣기 퀘스트</strong>를 하나로 모아,
+          레벨업과 보상으로 동기부여를 높이는 학습 경험을 제공합니다.
+        </p>
+
+        <div class="lv-badges" role="list" aria-label="기술 배지">
+          <span class="lv-badge" role="listitem">Beta v0.9</span>
+          <span class="lv-badge" role="listitem">WCAG Friendly</span>
+          <span class="lv-badge" role="listitem">PWA Ready</span>
+        </div>
+      </section>
+
+      <!-- 학습 메뉴 -->
+      <nav class="lv-col" aria-label="Learn">
+        <h4>Learn</h4>
+        <ul class="lv-list">
+          <li><a href="./gr.html">Grammar Quest</a></li>
+          <li><a href="./reading.html">Reading Lab</a></li>
+          <li><a href="./bingo.html">Bingo Listening</a></li>
+          <li><a href="./hall.html">Hall of Fame</a></li>
+        </ul>
+      </nav>
+
+      <!-- 리소스 -->
+      <nav class="lv-col" aria-label="Resources">
+        <h4>Resources</h4>
+        <ul class="lv-list">
+          <li><a href="/blog.html">Etymology Blog</a></li>
+          <li><a href="/roadmap.html">Roadmap</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- 뉴스레터 -->
+      <section class="lv-col" aria-label="Newsletter signup">
+        <div class="lv-news">
+          <h5>주간 업데이트 받기</h5>
+          <p>신규 퀘스트·배지·콘텐츠 소식을 메일로 받아보세요. 스팸은 보내지 않아요.</p>
+          <form id="lv-newsletter" class="lv-input" action="#" method="post" novalidate>
+            <input type="email" name="email" required placeholder="you@example.com" aria-label="이메일 입력">
+            <button type="submit" aria-label="구독하기">Subscribe</button>
+          </form>
+          <div class="lv-legal">구독 시 <a href="/privacy.html" style="color:var(--accent)">개인정보 처리방침</a>에 동의합니다.</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 하단 바 -->
+    <div class="lv-bottom">
+      <div class="lv-mini">
+        <span class="lv-dot" aria-hidden="true"></span>
+        <span>© 2025 LingoVerse. Designed for curious minds.</span>
+      </div>
+
+      <div class="lv-social" aria-label="Social links">
+        <a class="lv-ico" href="https://github.com/sungkewl/" target="_blank" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.2-3.37-1.2-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.61.07-.61 1 .07 1.52 1.04 1.52 1.04.89 1.52 2.33 1.08 2.9.83.09-.65.35-1.08.64-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.28.1-2.66 0 0 .85-.27 2.78 1.02a9.7 9.7 0 0 1 5.06 0c1.93-1.29 2.78-1.02 2.78-1.02.55 1.38.2 2.41.1 2.66.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.57.69.47A10 10 0 0 0 12 2z"/></svg>
+        </a>
+        <a class="lv-ico" href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.4.6a3 3 0 0 0-2.1 2.1A31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.4.6 9.4.6s7.2 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg>
+        </a>
+        <a class="lv-ico" href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm6.2-3.7a1 1 0 1 1-1.4 1.4 1 1 0 0 1 1.4-1.4Z"/></svg>
+        </a>
+      </div>
+
+      <div class="lv-top">
+        <select class="lv-lang" aria-label="언어 선택">
+          <option>한국어 (KO)</option>
+          <option>English (EN)</option>
+          <option>日本語 (JA)</option>
+        </select>
+        <button id="lv-to-top" aria-label="맨 위로">Back to top</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script defer src="./js/dataManager.js"></script>
+<script defer src="./js/index.js"></script>
+
+
+
+<script>
+  // header
+
+  
+  (function(){
+    const header = document.querySelector('.lv-header');
+    let stuck = false;
+
+    function onScroll(){
+      const next = window.scrollY > 8;
+      if(next !== stuck){
+        stuck = next;
+        header.classList.toggle('is-stuck', stuck);
+      }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+
+
+  // 스크롤 애니메이션
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => observer.observe(card));
+
+
+
+  
+// ===================== /FOOTER =====================
+  // Back-to-Top
+  document.getElementById('lv-to-top')?.addEventListener('click', () =>
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  );
+
+  // 뉴스레터 (데모) — 서버/백엔드 미결
+  document.getElementById('lv-newsletter')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = e.currentTarget.querySelector('input[type="email"]').value.trim();
+    if(!email){
+      alert('이메일을 입력해주세요.');
+      return;
+    }
+    // TODO: fetch('/api/newsletter', {method:'POST', body: JSON.stringify({email})})
+    alert('구독해주셔서 감사합니다! 🙂');
+    e.currentTarget.reset();
+  });
+
+
+
+
+
+  // 햄버거 메뉴 토글
+  (function(){
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.querySelector('nav.nav');
+    const overlay = document.getElementById('nav-overlay');
+    if(!toggle || !nav) return;
+    function close(){
+      nav.classList.remove('open');
+      toggle.classList.remove('is-active');
+      toggle.setAttribute('aria-expanded','false');
+      document.body.classList.remove('menu-open');
+    }
+    toggle.addEventListener('click', (e)=>{
+      const isOpen = nav.classList.toggle('open');
+      toggle.classList.toggle('is-active', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('menu-open', isOpen);
+      e.stopPropagation();
+    });
+    document.addEventListener('click', (e)=>{
+      if(!nav.classList.contains('open')) return;
+      const within = nav.contains(e.target) || toggle.contains(e.target);
+      if(!within) close();
+    });
+    nav.querySelectorAll('a').forEach(a=> a.addEventListener('click', close));
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+    overlay?.addEventListener('click', close);
+  })();
+
+</script>
+</body>
+</html>
+
+
+
+

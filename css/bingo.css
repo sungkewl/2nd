@@ -1,0 +1,545 @@
+@charset "utf-8";
+
+
+:root {
+  --primary-color: #4a90e2; 
+  --accent-color: #f5a623; 
+  --text-color: #343a40;
+  --bg-color: #f8f9fa;
+  --border-color: #dee2e6;
+  --surface-color: #ffffff; 
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--primary-color);
+  color: var(--text-color);
+  font-family: "Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif;
+  line-height: 1.5;
+}
+
+/* Page title to match Reading Quest */
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 24px;
+  color: var(--accent-color);
+  text-align: center;
+  text-shadow: 2px 2px #000;
+  margin: 16px 0 12px;
+}
+
+
+.main-container {
+  display: grid;
+  grid-template-columns: minmax(200px, 240px) minmax(0, 1fr) minmax(
+      220px,
+      280px
+    );
+  gap: 16px;
+  align-items: start;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+
+.sidebar {
+  background: var(--surface-color);
+  color: var(--text-color);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  min-width: 0; /* grid overflow 諛⑹? */
+}
+
+
+.left-nav h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+}
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nav-list a {
+  display: block;
+  padding: 12px 15px;
+  text-decoration: none;
+  color: var(--text-color);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  font-weight: 500;
+  transition: background-color 0.25s, color 0.25s, transform 0.12s;
+}
+.nav-list a:hover {
+  background: rgba(74, 144, 226, 0.12); /* primary 12% */
+}
+.nav-list a.active {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.main-content {
+  min-width: 0;
+  padding: 0;
+}
+.content-section {
+  display: none;
+}
+.content-section.active {
+  display: block;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Docked (on scroll) — aligns video to the left column width */
+.video-container.docked {
+  position: fixed !important;
+  /* values provided by JS via CSS variables */
+  left: var(--dock-left, 16px) !important;
+  top: var(--dock-top, 16px) !important;
+  width: var(--dock-width, 240px) !important;
+  height: calc(var(--dock-width, 240px) * 0.5625) !important; /* 16:9 */
+  padding-bottom: 0 !important; /* disable aspect-ratio padding */
+  z-index: 9999 !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25) !important;
+}
+.video-container.docked iframe {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.game-area {
+  padding-top: 20px;
+}
+
+/* Controls: bingo counter + reset button */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 8px 0 12px;
+}
+.bingo-counter {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #e7f1ff, #d6e8ff);
+  color: #10325f;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  border: 1px solid #bcd3f7;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+.reset-btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: #0f172a;
+  color: #e9eef7;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .15s ease, transform .1s ease;
+}
+.reset-btn:hover { background: #141f3a; transform: translateY(-1px); }
+.reset-btn:active { transform: translateY(0); }
+.reset-btn{border-radius: 8px;background-color: var(--accent-color);color: #1f2a37;}
+/* ===== Bingo Board (restored minimal styles) ===== */
+.bingo-section { max-width: 100%; }
+.bingo-board {
+  display: grid;
+  /* Allow tracks to shrink below content's min-content width */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px auto 0;
+}
+.bingo-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0; /* let content wrap on small screens */
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #1f2a37;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  line-height: 1.25;
+  word-break: keep-all;
+}
+.bingo-cell:hover { filter: brightness(0.98); }
+.bingo-cell.selected {
+  background: rgba(74,144,226,.14);
+  border-color: rgba(74,144,226,.6);
+  box-shadow: 0 0 0 2px rgba(74,144,226,.25) inset;
+}
+.bingo-line-highlight{ outline: 2px solid rgba(245,166,35,.85); outline-offset:-2px; }
+
+
+.bingo-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 20px 0;
+  min-width: 0;
+}
+.bingo-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.15s, background-color 0.2s,
+    color 0.2s;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px;
+  text-transform: capitalize;
+  user-select: none;
+  overflow-wrap: anywhere;
+}
+.bingo-cell:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+.bingo-cell.selected {
+  background: var(--accent-color);
+  color: #000;
+  font-weight: 800;
+  transform: scale(1.04);
+}
+.bingo-line-highlight {
+  background: var(--primary-color) !important;
+  color: #fff !important;
+}
+
+.message-area {
+  min-height: 2.2em;
+  background: hsl(214, 85%, 92%); 
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+
+.right-badges h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+}
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 14px;
+}
+.badge {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: relative;
+  background: #eef1f6;
+  color: #7a879a;
+  border: 1px solid var(--border-color);
+}
+.badge .badge-icon {
+  font-size: 34px;
+}
+.badge .badge-name {
+  font-size: 12px;
+  margin-top: 6px;
+  font-weight: 700;
+}
+
+.badge.achieved {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.4);
+}
+.badge.locked {
+  filter: grayscale(80%);
+}
+
+
+.badge::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+  z-index: 10;
+}
+.badge:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.video-fallback { margin-top:10px; }
+.open-extern {
+  display:inline-block; padding:8px 12px; border-radius:8px;
+  background:#1a2140; color:#fff; text-decoration:none; font-size:14px;
+}
+.open-extern:hover { filter:brightness(1.1); }
+.home-float-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: #fff;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  transition: background-color 0.25s, transform 0.15s;
+  z-index: 1000; /* ?ㅻⅨ ?붿냼 ?꾨줈 */
+}
+
+.home-float-btn:hover {
+  background: #357ab9;
+  transform: scale(1.05);
+}
+
+
+@media (max-width: 1240px) {
+  .main-container {
+    grid-template-columns: minmax(180px, 220px) minmax(0, 1fr) minmax(
+        180px,
+        240px
+      );
+    gap: 12px;
+  }
+  .bingo-cell {
+    font-size: 12px;
+  }
+}
+@media (max-width: 980px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* =========================================
+   580px 이하: 보드 ↔ 배지 겹침 방지 전담 패치
+   ========================================= */
+@media (max-width: 580px) {
+  /* 1) 메인 그리드: 완전 1열 + 넉넉한 세로 간격 */
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr;     /* 한 칼럼 */
+    grid-auto-rows: auto;           /* 높이 자동 */
+    row-gap: 18px;                  /* 섹션 간격 넉넉하게 */
+  }
+
+  /* 2) 좌/중/우 영역을 강제로 순서대로 쌓기 */
+  .left-nav      { order: 1; }
+  .main-content  { order: 2; }
+  .right-badges  { order: 3; }
+
+  /* 3) 배지 패널은 절대/고정 위치 금지 + 폭 100% */
+  .right-badges {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;  
+    margin-top: 8px;              /* 혹시 남은 마진이 있으면 초기화 */
+  }
+
+  /* 4) 빙고 섹션은 내부를 세로로 쌓고, 요소 간 간격 확보 */
+  .bingo-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+  }
+
+  /* 5) 보드가 너무 커서 배지를 눌러 덮는 걸 방지 (간격/폰트 축소) */
+  .bingo-board {
+    gap: 6px;
+  }
+  .bingo-cell {
+    padding: 6px;
+    font-size: clamp(11px, 3.5vw, 14px);
+    /* 긴 영문 줄바꿈 안전장치 */
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  /* 6) 영상 아래 여백 확보(iframe 아래로 보드가 겹쳐 깔리는 현상 방지) */
+  .video-container {
+    margin-bottom: 10px;
+  }
+
+  /* 7) 혹시 상단 내비/탭이 fixed면 겹침 유발 → 모바일에선 해제 */
+  .nav-list,
+  .tabs {
+    position: static !important;
+  }
+
+  /* 8) z-index/겹침 최후의 안전핀 */
+  .main-content,
+  .right-badges {
+    z-index: auto !important;
+  }
+}
+/* 580px 이하: 겹침 “강제 리셋” */
+@media (max-width: 580px) {
+
+  /* 메인 그리드 → 한 줄 */
+  .main-container {
+    display: block;
+  }
+  .left-nav, .main-content, .right-badges {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 18px 0;
+    clear: both;
+    float: none;
+  }
+
+  /* 배지 패널 및 내부에 있는 모든 고정/절대 레이어 해제 */
+  .right-badges,
+  .right-badges * {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    z-index: auto !important;
+  }
+
+  /* 팝오버/툴팁 네이밍을 추가로 방어 (있을 경우) */
+  [class*="popover"],
+  [class*="tooltip"],
+  .avatar-popover,
+  .badge-popover {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    z-index: auto !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 8px 0 0;
+  }
+
+  /* 빙고 보드가 위에 덮이지 않도록 기본 스택 정리 */
+  .bingo-section, .video-container {
+    position: relative;
+    z-index: 0;
+  }
+
+  /* 보드 크기/글자 조금 더 줄여 세로 압력 완화 */
+  .bingo-board { gap: 6px; }
+  .bingo-cell  { padding: 6px; font-size: clamp(11px, 3.5vw, 14px); }
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Avatar widget (bingo page) */
+.avatar-figure {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: block;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.25), 0 4px 12px rgba(0,0,0,.15);
+}
+.avatar-widget { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; margin-bottom: 14px; }
+.avatar-title { font-weight: 700; }
+.avatar-desc { font-size: 12px; color: #6c757d; }
+
+/* --- Small screens overrides (final pass) --- */
+@media (max-width: 580px) {
+  .main-container { grid-template-columns: 1fr !important; }
+  .right-badges { margin-top: 28px !important; }
+  .video-container.docked {
+    position: relative !important;
+    left: auto !important; top: auto !important;
+    width: 100% !important; height: auto !important;
+    padding-bottom: 56.25% !important; box-shadow: none !important;
+  }
+  .bingo-board { gap: 4px !important; }
+  .bingo-cell  { padding: 4px !important; font-size: clamp(10px, 3.3vw, 13px) !important; }
+}
+
+/* Wider small screens to ensure effect is visible earlier */
+@media (max-width: 700px) {
+  .main-container { grid-template-columns: 1fr !important; }
+  .right-badges { margin-top: 32px !important; }
+  .video-container { margin-bottom: 14px; }
+  .bingo-board { gap: 6px !important; }
+  .bingo-cell  { padding: 6px !important; font-size: clamp(11px, 3.2vw, 14px) !important; }
+}
+
+/* 500px 이하: 셀을 정사각형으로 유지 */
+@media (max-width: 500px) {
+  .bingo-board { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+  .bingo-cell  {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    min-width: 0;
+    line-height: 1.15;
+    padding: 4px !important;
+    font-size: clamp(10px, 2.9vw, 12px) !important;
+  }
+}
+

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Listening Bingo</title>
+
+    <!-- Google Font (페이지 전용) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 단독 스타일 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/bingo.css" />
+  </head>
+  <body>
+    <h1>Bingo Quest</h1>
+    <div class="main-container">
+      <!-- 좌측: 학습 목록 -->
+      <nav class="sidebar left-nav" aria-label="학습 목록">
+        <h2>학습 목록</h2>
+        <ul class="nav-list">
+          <li>
+            <a href="#" class="nav-link active" data-target="#video-1-content"
+              >Freedom in Prison (Video 1)</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="#video-2-content"
+              >The World’s Most Dangerous River (Video 2)</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 중앙: 영상 + 빙고 게임 -->
+      <main class="main-content" id="main">
+        <!-- 비디오 1 -->
+        <section
+          id="video-1-content"
+          class="content-section active"
+          aria-label="Freedom in Prison"
+        >
+          <div class="video-container">
+            <iframe
+              src="https://embed.ted.com/talks/lei_cheng_what_i_learned_about_freedom_in_a_secret_chinese_prison"
+              title="TED Talk: Freedom in Prison by Lei Cheng"
+              loading="lazy"
+              allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+              referrerpolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"
+              
+            >
+            </iframe>
+            <div class="video-fallback">
+              <a
+                class="open-extern"
+                target="_blank"
+                rel="noopener"
+                href="https://www.ted.com/talks/lei_cheng_what_i_learned_about_freedom_in_a_secret_chinese_prison"
+              >
+                ▶ 영상이 안 보이면 여기서 새 탭으로 열기
+              </a>
+            </div>
+          </div>
+
+          <div class="game-area">
+            <div class="bingo-section visible">
+              <div class="controls">
+                <div class="bingo-counter" aria-live="polite">BINGO: 0</div>
+                <button class="reset-btn" type="button">다시하기</button>
+              </div>
+              <div class="message-area" aria-live="polite">
+                빙고를 시작하려면 단어를 클릭하세요!
+              </div>
+              <!-- JS에서 5x5 칸 생성 -->
+              <div
+                class="bingo-board"
+                role="grid"
+                aria-label="빙고 보드 (Video 1)"
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 비디오 2 -->
+        <section
+          id="video-2-content"
+          class="content-section"
+          aria-label="The World’s Most Dangerous River"
+        >
+          <div class="video-container">
+            <iframe
+              src="https://embed.ted.com/talks/hany_farid_how_to_spot_fake_ai_photos"
+              title="How to spot fake AI photos by Hany Farid"
+              loading="lazy"
+              allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+              referrerpolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"
+              
+            >
+            </iframe>
+
+            <div class="video-fallback">
+              <a
+                class="open-extern"
+                target="_blank"
+                rel="noopener"
+                href="https://www.ted.com/talks/lei_cheng_what_i_learned_about_freedom_in_a_secret_chinese_prison"
+              >
+                ▶ 영상이 안 보이면 여기서 새 탭으로 열기
+              </a>
+            </div>
+          </div>
+
+          <div class="game-area">
+            <div class="bingo-section visible">
+              <div class="controls">
+                <div class="bingo-counter" aria-live="polite">BINGO: 0</div>
+                <button class="reset-btn" type="button">다시하기</button>
+              </div>
+              <div class="message-area" aria-live="polite">
+                빙고를 시작하려면 단어를 클릭하세요!
+              </div>
+              <div
+                class="bingo-board"
+                role="grid"
+                aria-label="빙고 보드 (Video 2)"
+              ></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- 우측: 뱃지 -->
+      <aside class="sidebar right-badges" aria-label="나의 뱃지">
+        <div class="avatar-widget">
+          <div
+            id="avatar-figure"
+            class="avatar-figure"
+            aria-label="아바타"
+          ></div>
+          <div class="avatar-meta">
+            <div id="avatar-title" class="avatar-title">Novice Reader</div>
+            <div id="avatar-desc" class="avatar-desc">기본 복장</div>
+          </div>
+        </div>
+        <h2>나의 뱃지</h2>
+        <div class="badge-grid">
+          <div
+            id="badge-first-bingo"
+            class="badge locked"
+            data-tooltip="첫 번째 빙고를 달성하세요"
+          >
+            <span class="badge-icon">🏆</span>
+            <span class="badge-name">첫 빙고!</span>
+          </div>
+          <div
+            id="badge-perfect"
+            class="badge locked"
+            data-tooltip="모든 칸을 채우세요 (블랙아웃)"
+          >
+            <span class="badge-icon">✨</span>
+            <span class="badge-name">완벽주의자</span>
+          </div>
+          <div
+            id="badge-ted-fan"
+            class="badge locked"
+            data-tooltip="TED 영상 5개 학습 완료"
+          >
+            <span class="badge-icon">❤️</span>
+            <span class="badge-name">TED 매니아</span>
+          </div>
+          <div
+            id="badge-beginner"
+            class="badge achieved"
+            data-tooltip="회원가입 완료"
+          >
+            <span class="badge-icon">🚀</span>
+            <span class="badge-name">새로운 시작</span>
+          </div>
+          <div
+            id="badge-word-master"
+            class="badge locked"
+            data-tooltip="단어 100개 학습 완료"
+          >
+            <span class="badge-icon">📚</span>
+            <span class="badge-name">단어 박사</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <a href="./index.html" class="home-float-btn" aria-label="홈으로"> 🏠 </a>
+
+    <script defer src="./js/dataManager.js"></script>
+    <script defer src="./js/avatarWidget.js"></script>
+    <script defer src="./js/bingo.js"></script>
+
+    <script>
+      // ① Promise rejection 중 TED 광고 SDK(GPT) 타임아웃만 무음
+      window.addEventListener("unhandledrejection", (event) => {
+        const msg = String(event?.reason?.message || event?.reason || "");
+        if (/GPT did not load within the specified timeout/i.test(msg)) {
+          event.preventDefault();
+          console.info("[silenced] third-party GPT timeout");
+        }
+      });
+
+      // ② window.onerror도 TED/VWO/Prebid/React-iframe
+      window.addEventListener(
+        "error",
+        (event) => {
+          const src = String(event?.filename || "");
+          const msg = String(event?.message || "");
+          const is3p =
+            /(embed\.ted\.com|gpt\.js|prebid|vwo|react.*production|lei_cheng_|catherine_d_o_connell)/i.test(
+              src + msg
+            );
+          if (is3p) {
+            event.preventDefault();
+            console.info("[silenced] third-party error:", src || msg);
+          }
+        },
+        true
+      );
+    </script>
+  </body>
+</html>

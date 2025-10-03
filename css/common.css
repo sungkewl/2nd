@@ -1,0 +1,139 @@
+/* common.css */
+
+/* 1. 폰트 및 기본 색상 설정 */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+:root {
+    --primary-color: #4A90E2; /* Smart Blue */
+    --accent-color: #F5A623;  /* Energetic Orange */
+    --text-color: #343A40;
+    --light-text-color: #6c757d;
+    --bg-color: #F8F9FA;
+    --border-color: #dee2e6;
+    --white-color: #FFFFFF;
+    
+    /* 게임 테마 색상 */
+    --game-main-bg: #5d67a8;
+    --game-panel-bg: #3f4a8a;
+    --game-border-color: #2b3363;
+    --game-accent-color: #FFD700;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+/* 2. 공통 3단 레이아웃 */
+#main-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    align-items: flex-start;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.panel {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+#left-panel, #right-panel {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+#center-panel {
+    flex-grow: 1;
+}
+
+/* 3. 공통 UI 요소 스타일 */
+h1 { /* 페이지 최상단 메인 제목 */
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+h2 { /* 패널 제목 */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.game-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.game-button:hover {
+    background-color: #357ABD;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* 4. 페이지 전환용 클래스 */
+.content-section {
+    display: none;
+}
+.content-section.active {
+    display: block;
+}
+
+/* 5. gr.html (그래머 RPG) 전용 스타일 */
+#game-world {
+    display: grid;
+    grid-template-columns: repeat(12, 40px);
+    grid-template-rows: repeat(12, 40px);
+    position: relative;
+    background-color: #222;
+    border: 4px solid #666;
+    border-radius: 8px; /* 패널과 통일감 */
+}
+.tile { width: 40px; height: 40px; image-rendering: pixelated; position: relative; }
+.object { position: absolute; }
+.character-name { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); color: white; font-size: 10px; font-family: 'Press Start 2P', cursive; text-shadow: 1px 1px #000; white-space: nowrap; padding-bottom: 5px; user-select: none; }
+.hidden { display: none !important; }
+
+.npc.object, .apple.object, .bread.object { transform: scale(1.2); transform-origin: bottom; z-index: 5; }
+.player.object { transform: scale(1.5); transform-origin: bottom; z-index: 10; }
+
+/* Avatar widget (shared) */
+.avatar-figure {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: block;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,.25), 0 4px 12px rgba(0,0,0,.15);
+}
+.avatar-widget { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; }
+.avatar-title { font-weight: 700; }
+.avatar-desc { font-size: 12px; color: var(--light-text-color); }

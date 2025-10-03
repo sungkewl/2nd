@@ -1,0 +1,308 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+/* 전체 배경 및 레이아웃 */
+figure {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-image: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    perspective: 1000px;
+    -webkit-font-smoothing: antialiased; /* iOS 텍스트 겹침/두꺼움 완화 */
+    text-rendering: optimizeLegibility;
+}
+
+figure h1 {
+    position: absolute;
+    top: 5vh;
+    left: 4vw;
+}
+figure h1 > strong {
+    font-size: 2rem;
+    color: #fff;
+    letter-spacing: -1px;
+}
+figure h1 > span {
+    display: block;
+    font-size: 0.8rem;
+    color: #ccc;
+    opacity: 0.8;
+    line-height: 1.2;
+    margin-top: 5px;
+}
+figure a.menu {
+    position: absolute;
+    top: 5vh;
+    right: 4vw;
+    font-size: 1.5rem;
+    color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+figure a.menu:hover {
+    transform: scale(1.2);
+}
+figure > p {
+    position: absolute;
+    bottom: 3vh;
+    font-size: 0.7rem;
+    color: #888;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 플레이어 섹션 */
+section {
+    width: 25vw;
+    height: 70vh;
+    position: absolute;
+    left: 40%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.8s ease-in-out;
+    transform-style: preserve-3d;
+}
+section > article {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+    opacity: 1;
+    pointer-events: none;
+    transform: scale(0.9);
+    z-index: 1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+/* 활성화된 article만 보이도록 */
+section > article.on {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    z-index: 3;
+}
+
+/* 카드 내부 디자인 */
+section > article > .inner {
+    width: 100%;
+    height: 100%;
+    background: rgba(6, 9, 18, 0.4); /* darker base */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 15px;
+    padding: 3vh 2vw 5vh;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    mix-blend-mode: normal;
+}
+
+/* 앞(활성) 카드의 배경을 거의 불투명하게 해서 뒤 텍스트가 비치지 않도록 */
+section > article.on > .inner {
+    background: rgba(6, 9, 18, 0.97); /* darker active */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/* 앨범 커버 */
+section > article > .inner > .pic {
+    width: 15vw;
+    height: 15vw;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+section > article > .inner > .pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+section > article > .inner > .pic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+/* 앨범 커버 중앙 점 */
+section > article > .inner > .pic > .dot {
+    width: 2.5vw;
+    height: 2.5vw;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    position: relative;
+    z-index: 3;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 텍스트 정보 */
+section > article > .inner > .txt {
+    text-align: center;
+}
+section > article > .inner > .txt h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1vh;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+}
+section > article > .inner > .txt p {
+    font-size: 0.8rem;
+    color: #ccc;
+    margin-bottom: 2vh;
+    -webkit-font-smoothing: antialiased;
+}
+section > article > .inner > .txt ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5vw;
+}
+section > article > .inner > .txt ul li {
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    transition: transform 0.3s, opacity 0.3s;
+}
+section > article > .inner > .txt ul li:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+section > article > .inner > .txt ul li.play {
+    transform: scale(1.5);
+    opacity: 1;
+    color: #00bcd4; /* 강조색 */
+}
+
+/* 이전/다음 버튼 */
+figure .btnprev,
+figure .btnnext {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+figure .btnprev {
+    left: 2vw;
+}
+figure .btnnext {
+    right: 2vw;
+}
+figure .btnprev:hover,
+figure .btnnext:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+figure .btnprev::before,
+figure .btnnext::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+figure .btnprev::before {
+    content: "\f053"; /* chevron-left */
+    transform: translateX(2px);
+}
+figure .btnnext::before {
+    content: "\f054"; /* chevron-right */
+    transform: translateX(-2px);
+}
+figure .btnprev:hover::before {
+    transform: translateX(0);
+}
+figure .btnnext:hover::before {
+    transform: translateX(0);
+}
+
+/* 폰트 및 기타 스타일 */
+h1, h2, ul, p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* hall.css */
+
+.nav-panel {
+    position: fixed;
+    top: 120px;
+    left: -198px;
+    width: 200px;
+    height: 300px;
+    
+
+    /* --- Glossy / Glassmorphism 스타일 --- */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)); /* 은은한 그라데이션 */
+    backdrop-filter: blur(20px); /* 배경 블러 효과 강화 */
+    -webkit-backdrop-filter: blur(20px); /* Safari 브라우저 호환성 */
+    border-left: 1px solid rgba(255, 255, 255, 0.2); /* 왼쪽 테두리 */
+    box-shadow: -5px 0px 30px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    border-radius: 10px;
+    padding: 100px 30px 30px;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+    z-index: 10;
+}
+
+.nav-panel.on {
+    transform: translateX(0%);
+}
+
+/* 메뉴 안의 링크 스타일도 가독성을 위해 살짝 수정 */
+.nav-panel ul {
+    list-style: none;
+    padding: 0;
+}
+.nav-panel ul a {
+    display: block;
+    padding: 5px 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.nav-panel ul a:hover {
+    color: #FFD700; /* 예시: 호버 시 강조 색상 */
+    transform: translateX(10px); /* 오른쪽으로 살짝 이동 */
+}
